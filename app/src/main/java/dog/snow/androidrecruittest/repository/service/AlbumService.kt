@@ -16,10 +16,15 @@ import retrofit2.http.Query
 interface AlbumService {
 
     @GET("albums/{id}")
-    fun getAlbums(
+    fun getAlbum(
         @Path("id") id: String
 
     ): Deferred<RawAlbum>
+    @GET("albums?_limit=5}")
+    fun getAlbums(
+
+
+    ): Deferred<List<RawAlbum>>
 
     companion object{
         operator fun invoke(): AlbumService{

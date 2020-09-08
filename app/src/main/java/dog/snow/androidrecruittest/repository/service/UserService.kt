@@ -16,10 +16,14 @@ import retrofit2.http.Url
 interface UserService {
 
     @GET("users/{id}")
-    fun getUsers(
+    fun getUser(
         @Path("id") id: String
     ): Deferred<RawUser>
 
+    @GET("users?_limit=5")
+    fun getUsers(
+
+    ): Deferred<List<RawUser>>
     companion object{
         operator fun invoke(): UserService{
             val requestInterceptor = Interceptor { chain ->
