@@ -9,24 +9,37 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import dog.snow.androidrecruittest.R
 import dog.snow.androidrecruittest.ui.model.ListItem
-import kotlinx.android.synthetic.main.list_item.view.*
 
-class ListAdapter(private val onClick: (item: ListItem, position: Int, view: View) -> Unit) :
+class ListAdapter()://private val onClick: (item: ListItem, position: Int, view: View) -> Unit) :
     androidx.recyclerview.widget.ListAdapter<ListItem, ListAdapter.ViewHolder>(DIFF_CALLBACK) {
+
+    private var listItem :List<ListItem> = ArrayList()
+
+    init{
+       listItem
+    }
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
-        return ViewHolder(itemView, onClick)
+        return ViewHolder(itemView)//, onClick)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
         holder.bind(getItem(position))
 
+    fun list(list: List<ListItem>){
+        listItem = list
+        notifyDataSetChanged()
+    }
 
-
+     fun submittList(newList: List<ListItem>){
+        listItem=newList
+    }
     class ViewHolder(
-        itemView: View,
-        private val onClick: (item: ListItem, position: Int, view: View) -> Unit
+        itemView: View//,
+        //private val onClick: (item: ListItem, position: Int, view: View) -> Unit
     ) :
         RecyclerView.ViewHolder(itemView) {
         fun bind(item: ListItem) = with(itemView) {
@@ -36,7 +49,7 @@ class ListAdapter(private val onClick: (item: ListItem, position: Int, view: Vie
             tvTitle.text = item.title
             tvAlbumTitle.text = item.albumTitle
             //TODO: display item.thumbnailUrl in ivThumb
-            setOnClickListener { onClick(item, adapterPosition, this) }
+            //setOnClickListener { onClick(item, adapterPosition, this) }
         }
     }
 

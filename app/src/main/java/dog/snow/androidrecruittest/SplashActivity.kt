@@ -49,7 +49,9 @@ class SplashActivity : AppCompatActivity(R.layout.splash_activity){
         //setContentView(R.layout.splash_activity)
 
         LOG.warning("onCreate:Splash")
-        ListFragment()
+        val intent = Intent(this, MainActivity::class.java).apply {
+        }
+        startActivity(intent)
     }
 
     private fun showError(errorMessage: String?) {

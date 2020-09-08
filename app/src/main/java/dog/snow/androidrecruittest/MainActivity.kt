@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(R.layout.main_activity){
         setSupportActionBar(findViewById(R.id.toolbar))
         LOG.warning( "onCreate:MAIN ")
         LOG.warning(MainDatabase.invoke(context = this).albumsDao().getAlbums().toString())
-        //ListFragment()
+        ListFragment()
 
     }
 
