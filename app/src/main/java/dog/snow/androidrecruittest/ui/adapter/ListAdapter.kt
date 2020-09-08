@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import dog.snow.androidrecruittest.R
 import dog.snow.androidrecruittest.ui.model.ListItem
+import kotlinx.android.synthetic.main.list_item.view.*
 
 class ListAdapter(private val onClick: (item: ListItem, position: Int, view: View) -> Unit) :
     androidx.recyclerview.widget.ListAdapter<ListItem, ListAdapter.ViewHolder>(DIFF_CALLBACK) {
@@ -20,6 +21,8 @@ class ListAdapter(private val onClick: (item: ListItem, position: Int, view: Vie
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
         holder.bind(getItem(position))
+
+
 
     class ViewHolder(
         itemView: View,
